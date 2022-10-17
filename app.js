@@ -14,6 +14,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const reviewRouter = require('./Routes/reviewRoutes');
 const bookingRouter = require('./Routes/bookingRoutes');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const app = express();
 app.set('view engine', 'pug');
@@ -102,6 +103,8 @@ app.use(
     ],
   })
 );
+
+app.use(compression());
 
 // app.use(express.static(`${__dirname}/public`));
 app.use(express.static(path.join(__dirname, 'public')));
